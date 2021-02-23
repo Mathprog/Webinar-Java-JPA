@@ -17,35 +17,36 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table("Employee")
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "employeeid")
+	@Column(name = "employeeID")
 	private Integer employeeID;
 	
-	@Column(name = "employeenumber")
+	@Column(name = "employeeNumber")
 	private Integer employeeNumber;
 	
-	@Column(name = "firstname")
+	@Column(name = "firstName")
 	private String firstName;
 	
-	@Column(name = "lastname")
+	@Column(name = "lastName")
 	private String lastName;
 	
-	@Column(name = "phonenumber")
+	@Column(name = "phoneNumber")
 	private String phoneNumber;
 	
 	private String email;
 	
-	@Column(name = "hiredate")
+	@Column(name = "hireDate")
 	private Date hireDate;	
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "departmentid")
+	@JoinColumn(name = "departmentID")
 	private Department department;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	@JoinColumn(name = "employeeid")
+	@JoinColumn(name = "employeeID")
 	private List<Project> projects = new ArrayList<>();
 }
